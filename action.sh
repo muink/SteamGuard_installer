@@ -1,7 +1,8 @@
 #!/system/bin/sh
+#
+# depends jq
 
 MODDIR=${0%/*}
-. "$MODDIR"/common/common.sh
 
 # Please encode the dump of SteamGuardDump using base64 and place it between the two single quotes below.
 DumpDATA=''
@@ -9,6 +10,34 @@ DumpDATA=''
 guardPATH='/data_mirror/data_ce/null/0/com.valvesoftware.android.steam.community/files/Steamguard-7612341512311041'
 uuid_xmlPATH='/data_mirror/data_ce/null/0/com.valvesoftware.android.steam.community/shared_prefs/steam.uuid.xml'
 RKStoragePATH='/data_mirror/data_ce/null/0/com.valvesoftware.android.steam.community/databases/RKStorage'
+
+# Common functions
+sleep_pause() {
+    # APatch and KernelSU needs this
+    # but not KSU_NEXT, MMRL
+    if [ -z "$MMRL" ] && [ -z "$KSU_NEXT" ] && { [ "$KSU" = "true" ] || [ "$APATCH" = "true" ]; }; then
+        sleep 6
+    fi
+}
+
+# func <str>
+decodeBase64Str() {
+    echo -n "$1" | jq -Rrc '@base64d' 2>/dev/null
+}
+
+# func <str>
+encodeBase64Str() {
+    echo -n "$1" | jq -Rrc '@base64' 2>/dev/null
+}
+
+# func <objvar> <filters> [args]
+jsonSelect() {
+    local obj filters="$2"
+    eval "obj=\"\$$1\""
+    shift 2
+
+    eval "echo \"\$obj\" | jq -c --args '${filters:-.}' \"\$@\" | jq -r './/\"\"'"
+}
 
 
 
