@@ -14,6 +14,10 @@
 10. 把前面备份的两个文件按原始 `所有者` `群组` `权限` 放回原位, 重新打开 Steam
 11. 现在可以安全地卸载模块或更新 Steam 了
 
+## 奇怪问题
+
+[Prompted for PIN to "exit Family View" on fresh install of Steam mobile app](https://steamcommunity.com/groups/steamfamilies/discussions/0/595148876446446418/)
+
 ## 参考来源
 
 [在Steam3.x上还原令牌](https://github.com/YifePlayte/SteamGuardDump/issues/2)
