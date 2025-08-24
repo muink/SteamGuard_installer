@@ -4,7 +4,7 @@
 
 1. 安装并登录 [Steam 3.10.0][] ，不要通过 Steam 内的方式迁移令牌
 2. 结束运行 Steam
-3. 保留`所有者``群组``权限`备份 `/data_mirror/data_ce/null/0/com.valvesoftware.android.steam.community/shared_prefs/steam.uuid.xml` 和 `/data_mirror/data_ce/null/0/com.valvesoftware.android.steam.community/databases/RKStorage`
+3. 保留`所有者` `群组` `权限`备份 `/data_mirror/data_ce/null/0/com.valvesoftware.android.steam.community/shared_prefs/steam.uuid.xml` 和 `/data_mirror/data_ce/null/0/com.valvesoftware.android.steam.community/databases/RKStorage`
 4. 编辑模块中的 `action.sh` 文件. 将 [SteamGuardDump][] 导出的内容使用 base64 编码为单行字符串, 填入 `DumpDATA=''` 的单引号中.
 5. 把编辑好的模块保存在安全的地方, **注意任何得到这个模块的人都能获取你的 SteamGuard**.
 6. 使用 Magisk / KernelSU / APatch 安装模块.
